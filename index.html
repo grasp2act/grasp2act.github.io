@@ -1,81 +1,1115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grasp2Act - Under Construction</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Grasp to Act: Dexterous Grasping for Tool-Use in Dynamic Settings">
+  <meta name="keywords" content="Robotics, Dexterous Grasping, Tool-Use">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Grasp to Act
+  </title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://grasp2act.github.io/">
+  <meta property="og:title" content="Grasp to Act: Dexterous Grasping for Tool-Use in Dynamic Settings">
+  <meta property="og:description" content="Learning stable, functional grasps from human videos using physics-based optimization and adaptive finger control.">
+  <meta property="og:image" content="https://grasp2act.github.io/static/images/teaser.png">
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 600px;
-        }
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://grasp2act.github.io/">
+  <meta property="twitter:title" content="Grasp to Act: Dexterous Grasping for Tool-Use in Dynamic Settings">
+  <meta property="twitter:description" content="Learning stable, functional grasps from human videos using physics-based optimization and adaptive finger control.">
+  <meta property="twitter:image" content="https://grasp2act.github.io/static/images/teaser.png">
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+  <link rel="icon" type="image/png" href="./static/images/favicon.ico" />
+  <link rel="shortcut icon" href="./static/images/favicon.ico" type="image/png" />
 
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
 
-        .construction-icon {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-            animation: bounce 2s infinite;
-        }
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .message {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.85;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-    </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="construction-icon">🚧</div>
-        <h1>Grasp2Act</h1>
-        <p class="subtitle">Under Construction</p>
-        <div class="message">
-            <p>This site is currently under development.</p>
-            <p>Check back soon for updates!</p>
-        </div>
-    </div>
-</body>
-</html>
 
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video is-hidden-mobile">
+    <video class="hero-video__media" playsinline autoplay muted loop>
+      <source src=" ./static/videos/teaser.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-video is-hidden-tablet is-inline-block-mobile">
+    <video class="hero-video__media" playsinline autoplay muted loop>
+      <source src=" ./static/videos/teaser_mobile.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item pl-4 pr-4" href="./static/paper.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+            <a class="navbar-item  pl-4 pr-4" href="">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv (coming Soon)</span>
+            </a>
+            <a href="https://youtu.be/4gXS9s4sH4g" class="navbar-item  pl-4 pr-4">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span>
+            </a>
+            <span class="navbar-item  pl-4 pr-4">
+              <a href="" class="button is-inverted is-large" disabled>
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code (coming soon)</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 9rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
+        Grasp to Act
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
+        Dextrous Grasping for Tool-Use In Dynamic Settings
+      </h1>
+      <div class="publication-authors is-size-4 is-size-6-mobile" style="margin-top: 0.75rem; color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
+        <span>
+          <a href="https://hgupt3.github.io/" style="color: white !important;">Harsh Gupta, </a>
+          <a href="https://www.aminmirzaee.com/" style="color: white !important;">Mohammad Amin Mirzaee, </a>
+          <a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz" style="color: white !important;">Wenzhen Yuan</a>
+        </span>
+      </div>
+      <div class="is-flex is-justify-content-center is-align-items-center" style="margin-top: 1rem; gap: 2rem;">
+        <div class="is-flex is-align-items-center" style="gap: 0.5rem;">
+          <img src="./static/images/illinois.png" alt="Illinois" style="height: 5rem; filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));">
+        </div>
+      </div>
+      <!-- <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+        In submission
+      </h1> -->
+      <div class="column has-text-centered is-hidden-tablet">
+        <div class="publication-links">
+          <!-- PDF Link. -->
+          <span class="link-block">
+            <a href="./static/paper.pdf" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="" disabled class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv (Coming Soon)</span>
+            </a>
+          </span>
+          <!-- Video Link. -->
+          <span class="link-block">
+            <a href="https://youtu.be/4gXS9s4sH4g" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span>
+            </a>
+          </span>
+          <!-- Code Link. -->
+          <span class="link-block">
+            <a href="" disabled 
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code (coming soon)</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-4">
+      <ul>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#technical-video">Video</a></li>
+          <li><a href="#team">Our Team</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<section class="section" id="problem">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered" style="max-width: 900px; margin: 8rem auto;">
+      <p class="is-size-4" style="font-size: 1.5rem;">
+         🤖 Robots can grasp — but they can't keep a stable hold once dynamic forces (impact, torque, resistance) show up during tool-use 🛠️🪚
+      </p>
+      <p class="is-size-4" style="margin-top: 5rem; margin-bottom: 3rem; font-size: 1.5rem;">
+        <strong>Our idea 💡:</strong> Start from a human-guided grasp optimization, then let RL adapt the fingers online 🔁 continuously correcting slip and rotation throughout the manipulation ✊
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Fancy button animations */
+  .method-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .method-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .method-btn:active:not(:disabled) {
+    transform: translateY(1px) scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .method-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  /* Ripple effect */
+  .method-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .method-btn:active:not(:disabled)::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+  
+  /* Unified black button design */
+  .method-btn {
+    background: #000000;
+    border: 2px solid #ffffff !important;
+  }
+  
+  .method-btn:hover:not(:disabled) {
+    background: #1a1a1a;
+    border-color: #ffffff !important;
+  }
+  
+  .method-btn:active:not(:disabled) {
+    background: #0a0a0a;
+  }
+  
+  /* Restart button rotation animation */
+  #restartBtn:hover:not(:disabled) {
+    transform: rotate(180deg) translateY(-2px);
+  }
+  
+  #restartBtn:active:not(:disabled) {
+    transform: rotate(180deg) scale(0.9);
+  }
+  
+  /* Checkpoint text animation */
+  #checkpointText {
+    transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  #checkpointText.fade-out {
+    opacity: 0;
+    transform: scale(0.9) rotateX(20deg);
+  }
+  
+  #checkpointText.fade-in {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+  }
+</style>
+
+<section class="section has-background-black" id="method" style="padding-top: 4rem; padding-bottom: 4rem;">
+  <div class="container is-max-desktop">
+    <!-- Video Container -->
+    <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+      <video id="methodVideo" muted style="width: 100%; max-width: 900px; height: auto;">
+        <source src="./static/videos/method.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Checkpoint Description -->
+    <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+      <p id="checkpointText" class="has-text-white has-text-centered" style="font-size: 1rem; min-height: 3rem; max-width: 900px; padding: 0 1rem;">
+      </p>
+    </div>
+
+    <!-- Controls Container -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; padding: 1rem;">
+      <!-- Previous Button (Circular) -->
+      <button id="prevBtn" class="method-btn" style="color: white; border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; padding: 0;">
+        <span class="icon">
+          <i class="fas fa-arrow-left"></i>
+        </span>
+      </button>
+
+      <!-- Next Button (Right Arrow) -->
+      <button id="nextBtn" class="method-btn" style="color: white; border: none; border-radius: 12px; padding: 1.25rem 4rem; cursor: pointer; font-size: 1.75rem; display: flex; align-items: center; justify-content: center;">
+        <span class="icon">
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </button>
+
+      <!-- Restart Button (Circular) -->
+      <button id="restartBtn" class="method-btn" style="color: white; border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; padding: 0;">
+        <span class="icon">
+          <i class="fas fa-redo"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Checkpoint system for method video
+  const methodVideo = document.getElementById('methodVideo');
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const checkpointText = document.getElementById('checkpointText');
+  
+  // Define checkpoints (in seconds)
+  const checkpoints = [3, 15, 22, 37, 50.7, 60];
+  
+  // Define checkpoint descriptions
+  const checkpointDescriptions = [
+    "We convert a human demonstration into a robot-executable grasp + manipulation policy by (A) extracting task motion, (B–C) generating candidate grasps, (D) stress-testing their stability, and (E) training an adaptive controller.",
+    "From one RGB-D video, we extract the object’s full 6-D trajectory and the human wrist pose relative to the object, defining where and how the tool should be grasped.",
+    "We sample wrist poses around the human grasp region and vary finger joint configurations (angles, closing rates, torque thresholds) to generate diverse candidate grasps.",
+    "Each candidate grasp is stress-tested along 12 force/torque axes, and we score it based on how long it resists slip or rotation before losing stability.",
+    "Starting from the highest-stability grasp, an RL controller learns residual finger corrections during the motion, continuously adjusting joints to maintain alignment throughout the task.",
+    "During RL training we inject task-specific forces—impact, resistance, payload—so the policy learns to maintain grasp stability under real-world dynamic loads."
+  ];
+  
+  let currentCheckpointIndex = 0;
+  let activeInterval = null;
+  
+  // Initialize video at first checkpoint
+  methodVideo.currentTime = checkpoints[0];
+  
+  // Update text description with animation
+  function updateText() {
+    // Fade out
+    checkpointText.classList.add('fade-out');
+    checkpointText.classList.remove('fade-in');
+    
+    // Change text after fade out
+    setTimeout(() => {
+      checkpointText.textContent = checkpointDescriptions[currentCheckpointIndex];
+      
+      // Fade in
+      checkpointText.classList.remove('fade-out');
+      checkpointText.classList.add('fade-in');
+    }, 400); // Match the CSS transition duration
+  }
+  
+  // Update button states only (no text animation)
+  function updateButtons() {
+    // Disable prev button if at start
+    prevBtn.disabled = currentCheckpointIndex === 0;
+    
+    // Disable next button if at last checkpoint
+    nextBtn.disabled = currentCheckpointIndex === checkpoints.length - 1;
+    
+    // Disable restart button if at first checkpoint
+    restartBtn.disabled = currentCheckpointIndex === 0;
+  }
+  
+  // Next button handler
+  nextBtn.addEventListener('click', function() {
+    if (currentCheckpointIndex < checkpoints.length - 1) {
+      // Clear any existing interval
+      if (activeInterval) {
+        clearInterval(activeInterval);
+        activeInterval = null;
+      }
+      
+      currentCheckpointIndex++;
+      const startTime = checkpoints[currentCheckpointIndex - 1];
+      const endTime = checkpoints[currentCheckpointIndex];
+      
+      methodVideo.currentTime = startTime;
+      methodVideo.play();
+      
+      // Stop at the next checkpoint
+      activeInterval = setInterval(function() {
+        if (methodVideo.currentTime >= endTime) {
+          methodVideo.pause();
+          clearInterval(activeInterval);
+          activeInterval = null;
+          updateButtons(); // Only update button states, no text animation
+        }
+      }, 50);
+      
+      updateButtons();
+      updateText(); // Animate text only on click
+    }
+  });
+  
+  // Previous button handler
+  prevBtn.addEventListener('click', function() {
+    if (currentCheckpointIndex > 0) {
+      // Clear any existing interval
+      if (activeInterval) {
+        clearInterval(activeInterval);
+        activeInterval = null;
+      }
+      
+      currentCheckpointIndex--;
+      methodVideo.currentTime = checkpoints[currentCheckpointIndex];
+      methodVideo.pause();
+      updateButtons();
+      updateText(); // Animate text only on click
+    }
+  });
+  
+  // Restart button handler
+  restartBtn.addEventListener('click', function() {
+    // Clear any existing interval
+    if (activeInterval) {
+      clearInterval(activeInterval);
+      activeInterval = null;
+    }
+    
+    currentCheckpointIndex = 0;
+    methodVideo.currentTime = checkpoints[0];
+    methodVideo.pause();
+    updateButtons();
+    updateText(); // Animate text only on click
+  });
+  
+  // Initialize button states and text
+  checkpointText.textContent = checkpointDescriptions[0];
+  checkpointText.classList.add('fade-in');
+  updateButtons();
+  
+  // Enforce muted state on method video
+  methodVideo.addEventListener('volumechange', function() {
+    if (!methodVideo.muted) {
+      methodVideo.muted = true;
+    }
+  });
+</script>
+
+<style>
+  /* Task button styles */
+  .task-btn {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Shimmer effect */
+  .task-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      transparent 100%);
+    transition: left 0.6s ease;
+    z-index: 3;
+  }
+  
+  .task-btn:hover::after {
+    left: 100%;
+  }
+  
+  .task-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .task-btn:hover::before {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .task-btn.active {
+    transform: scale(1.15);
+    z-index: 10;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .task-btn.active::before {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .task-btn.deactivating {
+    transform: scale(1);
+    transition: all 0.2s ease-out;
+  }
+  
+  .task-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .task-btn.active:hover {
+    transform: scale(1.15) translateY(-5px);
+  }
+  
+  .task-btn:active {
+    transform: translateY(-2px) scale(0.98);
+  }
+  
+  .task-btn-label {
+    position: relative;
+    z-index: 4;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 100%;
+  }
+  
+  .task-btn-label .play-icon {
+    font-size: 2rem;
+    opacity: 0.9;
+  }
+  
+  /* Video container animation */
+  #taskVideoContainer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  }
+  
+  #taskVideoContainer.show {
+    max-height: 3000px;
+    opacity: 1;
+  }
+  
+  #taskVideo {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Task button grid responsive layout */
+  .task-btn-wrapper {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(6, 1fr) !important;
+      gap: 0.75rem !important;
+      padding: 0 1rem;
+    }
+    
+    /* First 3 buttons - each spans 2 columns to equal 6 total */
+    .task-btn-wrapper:nth-child(1),
+    .task-btn-wrapper:nth-child(2),
+    .task-btn-wrapper:nth-child(3) {
+      grid-column: span 2;
+    }
+    
+    /* Last 2 buttons centered in row 2 - offset by 1 column, each spans 2 */
+    .task-btn-wrapper:nth-child(4) {
+      grid-column: 2 / span 2;
+    }
+    
+    .task-btn-wrapper:nth-child(5) {
+      grid-column: 4 / span 2;
+    }
+  }
+</style>
+
+<section class="section has-background-white" id="results" style="padding-top: 3rem; padding-bottom: 3rem;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered is-size-4-mobile">Results</h2>
+
+    <!-- Results Image and Description -->
+    <div style="margin-top: 2rem; margin-bottom: 1.5rem;">
+      <div class="content has-text-centered" style="max-width: 900px; margin: 0 auto 1.5rem auto;">
+        <p style="font-size: 1rem;">
+          We tested our approach on five real-world tool-use tasks. We compare against 2 baselines in the real-world: <strong>RL Base</strong> which is an RL policy trained from scratch and <strong>G2A w/o adaptation</strong> which is without the residual RL module.
+        </p>
+      </div>
+      <div class="has-text-centered" style="margin-bottom: 2rem;">
+        <div style="display: inline-block; padding: 1em 5em; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);">
+          <img src="./static/images/results.png" alt="Real-world Results" style="max-width: 100%; height: auto; display: block;" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="content has-text-centered" style="max-width: 900px; margin: 3rem auto 0 auto;">
+      <p style="font-size: 1.3rem; font-weight: 500;">
+        Click any task below to see it in action!
+      </p>
+    </div>
+
+    <!-- Task Buttons Grid -->
+    <div style="margin-top: 2rem;">
+      <div class="grid-container" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto;">
+        <div class="task-btn-wrapper">
+          <button class="task-btn" data-task="hammer" style="background-image: url('./static/images/hammer.png');">
+            <div class="task-btn-label">
+              <span>Hammer</span>
+              <i class="fas fa-play-circle play-icon"></i>
+            </div>
+          </button>
+        </div>
+        <div class="task-btn-wrapper">
+          <button class="task-btn" data-task="saw" style="background-image: url('./static/images/saw.png');">
+            <div class="task-btn-label">
+              <span>Saw</span>
+              <i class="fas fa-play-circle play-icon"></i>
+            </div>
+          </button>
+        </div>
+        <div class="task-btn-wrapper">
+          <button class="task-btn" data-task="cut" style="background-image: url('./static/images/cut.png');">
+            <div class="task-btn-label">
+              <span>Cut</span>
+              <i class="fas fa-play-circle play-icon"></i>
+            </div>
+          </button>
+        </div>
+        <div class="task-btn-wrapper">
+          <button class="task-btn" data-task="scoop" style="background-image: url('./static/images/scoop.png');">
+            <div class="task-btn-label">
+              <span>Scoop</span>
+              <i class="fas fa-play-circle play-icon"></i>
+            </div>
+          </button>
+        </div>
+        <div class="task-btn-wrapper">
+          <button class="task-btn" data-task="stir" style="background-image: url('./static/images/stir.png');">
+            <div class="task-btn-label">
+              <span>Stir</span>
+              <i class="fas fa-play-circle play-icon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Display Area -->
+    <div id="taskVideoContainer" style="margin-top: 3rem;">
+      <div style="display: flex; justify-content: center;">
+        <video id="taskVideo" muted loop controls>
+          <source id="taskVideoSource" src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+        <p id="taskDescription" class="content has-text-centered" style="max-width: 900px; font-size: 0.95rem; padding: 0 1rem;">
+        </p>
+      </div>
+      
+      <!-- Baseline Videos Section -->
+      <div style="margin-top: 2rem;">
+        <!-- Controls -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+          <button id="startBaselinesBtn" class="method-btn" style="color: white; border: none; border-radius: 8px; padding: 0.75rem 2rem; cursor: pointer; font-size: 1rem; background: #000000; border: 2px solid #ffffff;">
+            Start Baselines
+          </button>
+          <button id="restartBaselinesBtn" class="method-btn" style="color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; padding: 0; background: #000000; border: 2px solid #ffffff;">
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
+        
+        <!-- Single video for hammer and knife -->
+        <div id="singleBaselineContainer" style="display: none; justify-content: center; margin-top: 1rem;">
+          <video id="singleBaselineVideo" muted loop controls style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;">
+            <source id="singleBaselineSource" src="" type="video/mp4">
+          </video>
+        </div>
+        
+        <!-- Three videos for other tasks -->
+        <div id="tripleBaselineContainer" style="display: none; gap: 1rem; max-width: 1200px; margin: 1rem auto 0 auto;">
+          <div style="flex: 1; text-align: center;">
+            <p style="margin-bottom: 0.5rem; font-weight: 600;">RL Base</p>
+            <video id="rlVideo" muted loop controls style="width: 100%; height: auto; border-radius: 8px;">
+              <source id="rlVideoSource" src="" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; text-align: center;">
+            <p style="margin-bottom: 0.5rem; font-weight: 600;">G2A w/o Adaptation</p>
+            <video id="optVideo" muted loop controls style="width: 100%; height: auto; border-radius: 8px;">
+              <source id="optVideoSource" src="" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; text-align: center;">
+            <p style="margin-bottom: 0.5rem;"><strong>G2A (Ours)</strong></p>
+            <video id="g2aVideo" muted loop controls style="width: 100%; height: auto; border-radius: 8px;">
+              <source id="g2aVideoSource" src="" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Task video player
+  const taskButtons = document.querySelectorAll('.task-btn');
+  const taskVideo = document.getElementById('taskVideo');
+  const taskVideoSource = document.getElementById('taskVideoSource');
+  const taskVideoContainer = document.getElementById('taskVideoContainer');
+  const taskDescription = document.getElementById('taskDescription');
+  
+  // Baseline video elements
+  const startBaselinesBtn = document.getElementById('startBaselinesBtn');
+  const restartBaselinesBtn = document.getElementById('restartBaselinesBtn');
+  const singleBaselineContainer = document.getElementById('singleBaselineContainer');
+  const tripleBaselineContainer = document.getElementById('tripleBaselineContainer');
+  const singleBaselineVideo = document.getElementById('singleBaselineVideo');
+  const singleBaselineSource = document.getElementById('singleBaselineSource');
+  const rlVideo = document.getElementById('rlVideo');
+  const rlVideoSource = document.getElementById('rlVideoSource');
+  const optVideo = document.getElementById('optVideo');
+  const optVideoSource = document.getElementById('optVideoSource');
+  const g2aVideo = document.getElementById('g2aVideo');
+  const g2aVideoSource = document.getElementById('g2aVideoSource');
+  
+  let currentTask = '';
+  let baselinesPlaying = false;
+  
+  // Video mapping (cut uses knife.mp4)
+  const taskVideos = {
+    'hammer': './static/videos/hammer.mp4',
+    'saw': './static/videos/saw.mp4',
+    'cut': './static/videos/knife.mp4',
+    'scoop': './static/videos/scoop.mp4',
+    'stir': './static/videos/stir.mp4'
+  };
+  
+  // Baseline video mapping
+  const baselineVideos = {
+    'hammer': {
+      single: './static/videos/hammer_all.mp4'
+    },
+    'cut': {
+      single: './static/videos/knife_all.mp4'
+    },
+    'saw': {
+      rl: './static/videos/saw_rl.mp4',
+      opt: './static/videos/saw_opt.mp4',
+      g2a: './static/videos/saw_g2a.mp4'
+    },
+    'scoop': {
+      rl: './static/videos/scoop_rl.mp4',
+      opt: './static/videos/scoop_opt.mp4',
+      g2a: './static/videos/scoop_g2a.mp4'
+    },
+    'stir': {
+      rl: './static/videos/stir_rl.mp4',
+      opt: './static/videos/stir_opt.mp4',
+      g2a: './static/videos/stir_g2a.mp4'
+    }
+  };
+  
+  // Task-specific metric descriptions
+  const taskDescriptions = {
+    'hammer': '<strong>Hammering Task:</strong> The robot drives a nail into drywall using a standard claw hammer. This task requires maintaining a stable grip through repeated impact forces. We measure success by how much of the nail gets embedded with each strike.',
+    'saw': '<strong>Sawing Task:</strong> Using a handheld saw, the robot cuts through drywall with back-and-forth motions. This task requires handling continuous friction and torque while keeping the tool aligned. Success is measured by the length of the groove cut.',
+    'cut': '<strong>Cutting Task:</strong> The robot slices through a cucumber using a kitchen knife with repeated cutting motions. This task requires maintaining grip stability while applying downward force. We measure how deeply the knife cuts relative to the cucumber\'s thickness.',
+    'stir': '<strong>Stirring Task:</strong> Stirring pancake batter with a ladle tests continuous rotational control. The robot must keep a secure grip throughout the circular motion despite the batter\'s resistance. Success is measured by how consistently the grasp is maintained.',
+    'scoop': '<strong>Scooping Task:</strong> The robot transfers beans from one container to another using a single scooping motion. This task requires dynamic stability during rapid acceleration and deceleration. Performance is measured by the amount of beans successfully transferred.'
+  };
+  
+  taskButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const task = this.getAttribute('data-task');
+      const clickedButton = this;
+      const isAlreadyActive = clickedButton.classList.contains('active');
+      const playIcon = clickedButton.querySelector('.play-icon');
+      
+      // If clicking the active button, dismiss the video
+      if (isAlreadyActive) {
+        // Hide video container
+        taskVideoContainer.classList.remove('show');
+        
+        // Pause video
+        taskVideo.pause();
+        
+        // Clear description
+        taskDescription.innerHTML = '';
+        
+        // Remove active class
+        clickedButton.classList.remove('active');
+        
+        // Change back to play icon
+        playIcon.classList.remove('fa-pause-circle');
+        playIcon.classList.add('fa-play-circle');
+        
+        // Hide and stop baseline videos
+        singleBaselineContainer.style.display = 'none';
+        tripleBaselineContainer.style.display = 'none';
+        stopBaselineVideos();
+        currentTask = '';
+        baselinesPlaying = false;
+        
+        return;
+      }
+      
+      // Add deactivating class to currently active button and reset its icon
+      taskButtons.forEach(btn => {
+        if (btn.classList.contains('active') && btn !== clickedButton) {
+          btn.classList.add('deactivating');
+          const btnIcon = btn.querySelector('.play-icon');
+          btnIcon.classList.remove('fa-pause-circle');
+          btnIcon.classList.add('fa-play-circle');
+        }
+      });
+      
+      // Wait for deactivation animation, then remove classes and activate new button
+      setTimeout(() => {
+        taskButtons.forEach(btn => {
+          btn.classList.remove('active', 'deactivating');
+        });
+        
+        // Add active class to clicked button
+        clickedButton.classList.add('active');
+        
+        // Change to pause icon
+        playIcon.classList.remove('fa-play-circle');
+        playIcon.classList.add('fa-pause-circle');
+      }, 150);
+      
+      // Update video source with a slight delay for smoother transition
+      setTimeout(() => {
+        taskVideoSource.src = taskVideos[task];
+        taskVideo.load();
+        
+        // Update task description
+        taskDescription.innerHTML = taskDescriptions[task];
+        
+        // Show video container
+        taskVideoContainer.classList.add('show');
+        
+        // Auto play
+        taskVideo.play();
+        
+        // Set up baseline videos
+        currentTask = task;
+        setupBaselineVideos(task);
+      }, 100);
+    });
+  });
+  
+  // Setup baseline videos based on task
+  function setupBaselineVideos(task) {
+    // Stop any playing videos
+    stopBaselineVideos();
+    baselinesPlaying = false;
+    
+    const baselines = baselineVideos[task];
+    
+    if (baselines.single) {
+      // Hammer or Cut - single video
+      singleBaselineSource.src = baselines.single;
+      singleBaselineVideo.load();
+      singleBaselineContainer.style.display = 'flex';
+      tripleBaselineContainer.style.display = 'none';
+    } else {
+      // Other tasks - three videos
+      rlVideoSource.src = baselines.rl;
+      optVideoSource.src = baselines.opt;
+      g2aVideoSource.src = baselines.g2a;
+      rlVideo.load();
+      optVideo.load();
+      g2aVideo.load();
+      tripleBaselineContainer.style.display = 'flex';
+      singleBaselineContainer.style.display = 'none';
+    }
+  }
+  
+  // Start baseline videos
+  startBaselinesBtn.addEventListener('click', function() {
+    if (!currentTask) return;
+    
+    const baselines = baselineVideos[currentTask];
+    
+    if (baselines.single) {
+      singleBaselineVideo.currentTime = 0;
+      singleBaselineVideo.play();
+    } else {
+      rlVideo.currentTime = 0;
+      optVideo.currentTime = 0;
+      g2aVideo.currentTime = 0;
+      rlVideo.play();
+      optVideo.play();
+      g2aVideo.play();
+    }
+    
+    baselinesPlaying = true;
+  });
+  
+  // Restart baseline videos
+  restartBaselinesBtn.addEventListener('click', function() {
+    if (!currentTask) return;
+    
+    const baselines = baselineVideos[currentTask];
+    
+    if (baselines.single) {
+      singleBaselineVideo.currentTime = 0;
+      if (baselinesPlaying) {
+        singleBaselineVideo.play();
+      }
+    } else {
+      rlVideo.currentTime = 0;
+      optVideo.currentTime = 0;
+      g2aVideo.currentTime = 0;
+      if (baselinesPlaying) {
+        rlVideo.play();
+        optVideo.play();
+        g2aVideo.play();
+      }
+    }
+  });
+  
+  // Stop baseline videos
+  function stopBaselineVideos() {
+    singleBaselineVideo.pause();
+    rlVideo.pause();
+    optVideo.pause();
+    g2aVideo.pause();
+  }
+  
+  // Enforce muted state on all videos
+  taskVideo.addEventListener('volumechange', function() {
+    if (!taskVideo.muted) {
+      taskVideo.muted = true;
+    }
+  });
+  
+  singleBaselineVideo.addEventListener('volumechange', function() {
+    if (!singleBaselineVideo.muted) {
+      singleBaselineVideo.muted = true;
+    }
+  });
+  
+  rlVideo.addEventListener('volumechange', function() {
+    if (!rlVideo.muted) {
+      rlVideo.muted = true;
+    }
+  });
+  
+  optVideo.addEventListener('volumechange', function() {
+    if (!optVideo.muted) {
+      optVideo.muted = true;
+    }
+  });
+  
+  g2aVideo.addEventListener('volumechange', function() {
+    if (!g2aVideo.muted) {
+      g2aVideo.muted = true;
+    }
+  });
+</script>
+
+
+
+<section class="section" id="technical-video">
+  <div class="container is-fullhd">
+    <div class="box pt-6 pb-6">
+      <div class="columns is-max-desktop is-centered ">
+        <div class="column is-9 is-centered">
+          <h2 class="title is-3 has-text-centered is-size-5-mobile">Technical Summary Video</h2>
+          <iframe width="100%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/4gXS9s4sH4g" title="UMI on Air Technical Summary Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-small" id="team">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-size-4-mobile has-text-centered">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-center is-hidden-mobile" style="margin: 0 auto; gap: 5rem;">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://hgupt3.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/harsh.jpg" alt="Harsh Gupta">
+            </a>
+          </figure>
+          <a href="https://hgupt3.github.io/">Harsh Gupta</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.aminmirzaee.com/">
+              <img class="is-rounded
+                      " src="./static/images/amin.jpeg" alt="Mohammad Amin Mirzaee">
+            </a>
+          </figure>
+          <a href="https://www.aminmirzaee.com/"> Mohammad Amin Mirzaee</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz">
+              <img class="is-rounded
+                      " src="./static/images/wenzhen.jpeg" alt="Wenzhen Yuan">
+            </a>
+          </figure>
+          <a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz">Wenzhen Yuan</a>
+        </div>
+      </div>
+
+      <div class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-evenly is-hidden-tablet">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image  is-96x96">
+            <a href="https://hgupt3.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/harsh.jpg" alt="Harsh Gupta">
+            </a>
+          </figure>
+          <a href="https://hgupt3.github.io/">Harsh Gupta</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-96x96">
+            <a href="https://www.aminmirzaee.com/">
+              <img class="is-rounded
+                      " src="./static/images/amin.jpeg" alt="Mohammad Amin Mirzaee">
+            </a>
+          </figure>
+          <a href="https://www.aminmirzaee.com/">Mohammad Amin Mirzaee</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image  is-96x96">
+            <a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz">
+              <img class="is-rounded
+                      " src="./static/images/wenzhen.jpeg" alt="Wenzhen Yuan">
+            </a>
+          </figure>
+          <a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz">Wenzhen Yuan</a>
+        </div>
+      </div>
+
+      <div class="publication-authors" style="width: 100%; margin-top: 1rem;">
+        University of Illinois Urbana-Champaign
+      </div>
+
+
+    </div>
+    <br>
+    <!-- <pre class="is-hidden-mobile"><code>@misc{gupta2025umionairembodimentawareguidanceembodimentagnostic,
+      title={UMI-on-Air: Embodiment-Aware Guidance for Embodiment-Agnostic Visuomotor Policies}, 
+      author={Harsh Gupta and Xiaofeng Guo and Huy Ha and Chuer Pan and Muqing Cao and Dongjae Lee and Sebastian Sherer and Shuran Song and Guanya Shi},
+      year={2025},
+      eprint={2510.02614},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2510.02614}, 
+}</code></pre> -->
+    <p style="text-align: center;">
+      If you have any questions, please contact <a href="https://hgupt3.github.io/">Harsh Gupta</a>.
+    </p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Website template modified from <a href="https://umi-on-legs.github.io/">UMI-on-Legs</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
