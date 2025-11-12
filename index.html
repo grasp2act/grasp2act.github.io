@@ -328,7 +328,7 @@
   // Define checkpoint descriptions
   const checkpointDescriptions = [
     "We convert a human demonstration into a robot-executable grasp + manipulation policy by (A) extracting task motion, (B–C) generating candidate grasps, (D) stress-testing their stability, and (E) training an adaptive controller.",
-    "From one RGB-D video, we extract the object’s full 6-D trajectory and the human wrist pose relative to the object, defining where and how the tool should be grasped.",
+    "From one RGB-D video, we extract the object's full 6-D trajectory and the human wrist pose relative to the object, defining where and how the tool should be grasped.",
     "We sample wrist poses around the human grasp region and vary finger joint configurations (angles, closing rates, torque thresholds) to generate diverse candidate grasps.",
     "Each candidate grasp is stress-tested along 12 force/torque axes, and we score it based on how long it resists slip or rotation before losing stability.",
     "Starting from the highest-stability grasp, an RL controller learns residual finger corrections during the motion, continuously adjusting joints to maintain alignment throughout the task.",
@@ -337,9 +337,24 @@
   
   let currentCheckpointIndex = 0;
   let activeInterval = null;
+  let videoInitialized = false;
   
-  // Initialize video at first checkpoint
-  methodVideo.currentTime = checkpoints[0];
+  // Initialize video at first checkpoint when metadata is loaded
+  function initializeVideo() {
+    if (!videoInitialized && methodVideo.readyState >= 2) {
+      methodVideo.currentTime = checkpoints[0];
+      methodVideo.pause();
+      videoInitialized = true;
+    }
+  }
+  
+  // Wait for video to be ready
+  if (methodVideo.readyState >= 2) {
+    initializeVideo();
+  } else {
+    methodVideo.addEventListener('loadedmetadata', initializeVideo);
+    methodVideo.addEventListener('canplay', initializeVideo);
+  }
   
   // Update text description with animation
   function updateText() {
@@ -372,6 +387,9 @@
   // Next button handler
   nextBtn.addEventListener('click', function() {
     if (currentCheckpointIndex < checkpoints.length - 1) {
+      // Pause video first
+      methodVideo.pause();
+      
       // Clear any existing interval
       if (activeInterval) {
         clearInterval(activeInterval);
@@ -382,27 +400,33 @@
       const startTime = checkpoints[currentCheckpointIndex - 1];
       const endTime = checkpoints[currentCheckpointIndex];
       
-      methodVideo.currentTime = startTime;
-      methodVideo.play();
-      
-      // Stop at the next checkpoint
-      activeInterval = setInterval(function() {
-        if (methodVideo.currentTime >= endTime) {
-          methodVideo.pause();
-          clearInterval(activeInterval);
-          activeInterval = null;
-          updateButtons(); // Only update button states, no text animation
-        }
-      }, 50);
-      
       updateButtons();
-      updateText(); // Animate text only on click
+      updateText();
+      
+      // Small delay to ensure state is updated
+      setTimeout(() => {
+        methodVideo.currentTime = startTime;
+        methodVideo.play();
+        
+        // Stop at the next checkpoint
+        activeInterval = setInterval(function() {
+          if (methodVideo.currentTime >= endTime - 0.1) {
+            methodVideo.pause();
+            clearInterval(activeInterval);
+            activeInterval = null;
+            updateButtons();
+          }
+        }, 50);
+      }, 100);
     }
   });
   
   // Previous button handler
   prevBtn.addEventListener('click', function() {
     if (currentCheckpointIndex > 0) {
+      // Pause video first
+      methodVideo.pause();
+      
       // Clear any existing interval
       if (activeInterval) {
         clearInterval(activeInterval);
@@ -410,15 +434,22 @@
       }
       
       currentCheckpointIndex--;
-      methodVideo.currentTime = checkpoints[currentCheckpointIndex];
-      methodVideo.pause();
+      
       updateButtons();
-      updateText(); // Animate text only on click
+      updateText();
+      
+      // Small delay to ensure state is updated
+      setTimeout(() => {
+        methodVideo.currentTime = checkpoints[currentCheckpointIndex];
+      }, 100);
     }
   });
   
   // Restart button handler
   restartBtn.addEventListener('click', function() {
+    // Pause video first
+    methodVideo.pause();
+    
     // Clear any existing interval
     if (activeInterval) {
       clearInterval(activeInterval);
@@ -426,10 +457,14 @@
     }
     
     currentCheckpointIndex = 0;
-    methodVideo.currentTime = checkpoints[0];
-    methodVideo.pause();
+    
     updateButtons();
-    updateText(); // Animate text only on click
+    updateText();
+    
+    // Small delay to ensure state is updated
+    setTimeout(() => {
+      methodVideo.currentTime = checkpoints[0];
+    }, 100);
   });
   
   // Initialize button states and text
