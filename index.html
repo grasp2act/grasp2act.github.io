@@ -342,19 +342,26 @@
   // Initialize video at first checkpoint when metadata is loaded
   function initializeVideo() {
     if (!videoInitialized && methodVideo.readyState >= 2) {
-      methodVideo.currentTime = checkpoints[0];
-      methodVideo.pause();
-      
-      // Force render first frame on mobile
-      methodVideo.play().then(() => {
-        methodVideo.pause();
-        methodVideo.currentTime = checkpoints[0];
-      }).catch(() => {
-        // If autoplay is blocked, just set time
-        methodVideo.currentTime = checkpoints[0];
-      });
-      
       videoInitialized = true;
+      
+      // Set to first checkpoint
+      methodVideo.currentTime = checkpoints[0];
+      
+      // Listen for when seeking completes
+      methodVideo.addEventListener('seeked', function onSeeked() {
+        // Remove listener after first use
+        methodVideo.removeEventListener('seeked', onSeeked);
+        
+        // Force render first frame on mobile by briefly playing then immediately pausing
+        const playPromise = methodVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            methodVideo.pause();
+          }).catch(() => {
+            // Autoplay blocked, that's fine
+          });
+        }
+      }, { once: true });
     }
   }
   
