@@ -777,6 +777,22 @@
         </div>
       </div>
     </div>
+    
+    <!-- Robustness Demonstration Section -->
+    <div style="margin-top: 5rem; padding-top: 3rem; border-top: 2px solid #e0e0e0;">
+      <div class="content has-text-centered" style="max-width: 900px; margin: 0 auto 2rem auto;">
+        <h3 class="title is-4">Grasp Robustness Under Perturbation</h3>
+        <p style="font-size: 1rem;">
+          Our approach produces grasps that are extremely robust to random perturbations during task execution, maintaining stability even under unexpected disturbances.
+        </p>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <video id="robustVideo" muted loop controls playsinline autoplay style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;">
+          <source src="./static/videos/stir_robust.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1035,6 +1051,14 @@
   g2aVideo.addEventListener('volumechange', function() {
     if (!g2aVideo.muted) {
       g2aVideo.muted = true;
+    }
+  });
+  
+  // Enforce muted state on robust video
+  const robustVideo = document.getElementById('robustVideo');
+  robustVideo.addEventListener('volumechange', function() {
+    if (!robustVideo.muted) {
+      robustVideo.muted = true;
     }
   });
 </script>
