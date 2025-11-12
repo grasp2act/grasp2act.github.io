@@ -276,7 +276,7 @@
   <div class="container is-max-desktop">
     <!-- Video Container -->
     <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
-      <video id="methodVideo" muted style="width: 100%; max-width: 900px; height: auto;">
+      <video id="methodVideo" muted playsinline style="width: 100%; max-width: 900px; height: auto;">
         <source src="./static/videos/method.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -670,7 +670,7 @@
     <!-- Video Display Area -->
     <div id="taskVideoContainer" style="margin-top: 3rem;">
       <div style="display: flex; justify-content: center;">
-        <video id="taskVideo" muted loop controls>
+        <video id="taskVideo" muted loop controls playsinline>
           <source id="taskVideoSource" src="" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -694,7 +694,7 @@
         
         <!-- Single video for hammer and knife -->
         <div id="singleBaselineContainer" style="display: none; justify-content: center; margin-top: 1rem;">
-          <video id="singleBaselineVideo" muted loop controls style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;">
+          <video id="singleBaselineVideo" muted loop controls playsinline style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;">
             <source id="singleBaselineSource" src="" type="video/mp4">
           </video>
         </div>
@@ -703,19 +703,19 @@
         <div id="tripleBaselineContainer" style="display: none; gap: 1rem; max-width: 1200px; margin: 1rem auto 0 auto;">
           <div style="flex: 1; text-align: center;">
             <p style="margin-bottom: 0.5rem; font-weight: 600;">RL Base</p>
-            <video id="rlVideo" muted loop controls style="width: 100%; height: auto; border-radius: 8px;">
+            <video id="rlVideo" muted loop controls playsinline style="width: 100%; height: auto; border-radius: 8px;">
               <source id="rlVideoSource" src="" type="video/mp4">
             </video>
           </div>
           <div style="flex: 1; text-align: center;">
             <p style="margin-bottom: 0.5rem; font-weight: 600;">G2A w/o Adaptation</p>
-            <video id="optVideo" muted loop controls style="width: 100%; height: auto; border-radius: 8px;">
+            <video id="optVideo" muted loop controls playsinline style="width: 100%; height: auto; border-radius: 8px;">
               <source id="optVideoSource" src="" type="video/mp4">
             </video>
           </div>
           <div style="flex: 1; text-align: center;">
             <p style="margin-bottom: 0.5rem;"><strong>G2A (Ours)</strong></p>
-            <video id="g2aVideo" muted loop controls style="width: 100%; height: auto; border-radius: 8px;">
+            <video id="g2aVideo" muted loop controls playsinline style="width: 100%; height: auto; border-radius: 8px;">
               <source id="g2aVideoSource" src="" type="video/mp4">
             </video>
           </div>
