@@ -276,7 +276,7 @@
   <div class="container is-max-desktop">
     <!-- Video Container -->
     <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
-      <video id="methodVideo" muted playsinline style="width: 100%; max-width: 900px; height: auto;">
+      <video id="methodVideo" muted playsinline preload="auto" style="width: 100%; max-width: 900px; height: auto;">
         <source src="./static/videos/method.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -344,9 +344,22 @@
     if (!videoInitialized && methodVideo.readyState >= 2) {
       methodVideo.currentTime = checkpoints[0];
       methodVideo.pause();
+      
+      // Force render first frame on mobile
+      methodVideo.play().then(() => {
+        methodVideo.pause();
+        methodVideo.currentTime = checkpoints[0];
+      }).catch(() => {
+        // If autoplay is blocked, just set time
+        methodVideo.currentTime = checkpoints[0];
+      });
+      
       videoInitialized = true;
     }
   }
+  
+  // Force video load
+  methodVideo.load();
   
   // Wait for video to be ready
   if (methodVideo.readyState >= 2) {
